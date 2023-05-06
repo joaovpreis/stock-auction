@@ -21,6 +21,8 @@ describe 'Visitante acessa a tela de Login' do
 
     within('nav') do
       expect(page).to have_content('joao@provedor.com')
+      expect(page).not_to have_content('Cadastrar-se')
+      expect(page).not_to have_content('Logar')
     end
   end
 
@@ -35,7 +37,25 @@ describe 'Visitante acessa a tela de Login' do
   
     within('nav') do
       expect(page).not_to have_content('email@inexistente.com')
+      expect(page).not_to have_content('Sair')
     end
+  end
+
+  it 'e faz lougout' do
+    user = User.create!(name: 'João Guilherme', cpf:'89698395008', email:'joao@provedor.com', password:'password')
+    visit new_user_session_path
+  
+  
+    fill_in 'E-mail',	with: 'joao@provedor.com'
+    fill_in 'Senha',	with: 'password'
+    click_button 'Logar'
+
+    click_button 'Sair'
+    within('nav') do
+      expect(page).not_to have_content('email@inexistente.com')
+      expect(page).not_to have_content('Sair')
+    end
+
   end
   
 end

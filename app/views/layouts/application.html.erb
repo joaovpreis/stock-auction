@@ -13,16 +13,16 @@
 
     <h1>Leilão de Galpões</h1>
     <nav>
-      <%= link_to 'Cadastrar-se', new_user_registration_path %>
-      <%= link_to 'Logar', new_user_session_path %>
-      
       <% if user_signed_in? %>
+        <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
         <%= current_user.email %>
+      <% else %>
+        <%= link_to 'Cadastrar-se', new_user_registration_path %>
+        <%= link_to 'Logar', new_user_session_path %>
       <% end %>
-      
     </nav>
 
-    
+    <p class="notice"><%= alert %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
