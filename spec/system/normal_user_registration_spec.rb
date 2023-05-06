@@ -20,7 +20,6 @@ describe 'Visitante acessa a tela de cadastro' do
     fill_in 'CPF',	with: '89698395008'
     fill_in 'E-mail',	with: 'joao@gmail.com'
     fill_in 'Senha',	with: '1234567890'
-    fill_in 'Nome',	with: '1234567890' 
     fill_in 'Confirme sua senha',	with: '1234567890'
 
     click_on 'Cadastrar'
