@@ -49,7 +49,7 @@ describe "Administrador acessa a página de criação de items" do
     expect(page).to have_content('45 cm')
     expect(page).to have_content('5 cm')
     expect(page).to have_content('25 cm')
-    expect(page).to have_content(category.name)
+    expect(Item.last.code.size).to eq(10)
 
   end
   
