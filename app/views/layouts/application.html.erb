@@ -13,6 +13,8 @@
 
     <h1>Leilão de Galpões</h1>
     <nav>
+
+      <%= link_to 'Categorias', categories_path %>
       <% if user_signed_in? %>
         <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
         <%= current_user.email %>
@@ -28,7 +30,7 @@
       <% end %>
     </nav>
 
-    <p class="notice"><%= alert %></p>
+    <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>

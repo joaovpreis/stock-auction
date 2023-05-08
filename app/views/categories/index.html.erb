@@ -1,0 +1,18 @@
+<main>
+  <h2>Categorias:</h2>
+  <div>
+    <%= link_to 'Criar Categoria', new_category_path %>
+  <div> 
+  <% unless @categories.empty? %>
+    <div>
+      <dl>
+        <% @categories.each do |c| %>
+          <dt>Name</dt>
+          <dd><%= c.name %></dd>
+        <% end  %>
+      </dl>
+    </div>
+  <% else %>
+    <div>Nenhuma categoria cadastrada.</div>
+  <% end %>
+</main>
