@@ -7,8 +7,8 @@
     <div>
       <dl>
         <% @categories.each do |c| %>
-          <dt>Name</dt>
-          <dd><%= c.name %></dd>
+          <dt>Nome:</dt>
+          <dd><%= link_to c.name, c %></dd>
         <% end  %>
       </dl>
     </div>

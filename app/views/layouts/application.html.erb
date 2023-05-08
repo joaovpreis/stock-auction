@@ -13,7 +13,7 @@
 
     <h1>Leilão de Galpões</h1>
     <nav>
-
+      <%= link_to 'Criar Item', new_item_path %>
       <%= link_to 'Categorias', categories_path %>
       <% if user_signed_in? %>
         <%= button_to 'Sair', destroy_user_session_path, method: :delete %>

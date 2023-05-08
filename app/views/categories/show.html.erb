@@ -1,0 +1,12 @@
+<main>
+  <h2>Categoria:</h2>
+    <div>
+      <dl>
+        <dt>Nome:</dt>
+        <dd><%= @category.name %></dd>
+      </dl>
+    </div>
+    <div>
+      <%= link_to 'Editar Categoria', edit_category_path(@category.id) %>
+    </div>
+</main>

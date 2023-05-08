@@ -6,7 +6,7 @@ describe "Administrador acessa a página de criação de categorias" do
     login_as(admin)
     visit new_category_path
 
-    expect(page).to have_field('Name')
+    expect(page).to have_field('Nome')
     expect(page).to have_button('Criar Categoria')
   end
 
@@ -15,12 +15,12 @@ describe "Administrador acessa a página de criação de categorias" do
     login_as(admin)
     visit new_category_path
 
-    fill_in 'Name',	with: 'Produtos Eletrônicos'
+    fill_in 'Nome',	with: 'Produtos Eletrônicos'
 
     click_button 'Criar Categoria'
 
     expect(page).to have_content('Categoria criada com sucesso.')
-    expect(page).to have_current_path(root_path)
+    expect(page).to have_current_path(category_path(Category.first.id))
     expect(Category.first.name).to eq('Produtos Eletrônicos')
   end
 
@@ -30,12 +30,12 @@ describe "Administrador acessa a página de criação de categorias" do
     login_as(admin)
     visit new_category_path
 
-    fill_in 'Name',	with: 'Produtos Eletrônicos'
+    fill_in 'Nome',	with: 'Produtos Eletrônicos'
 
     click_button 'Criar Categoria'
 
     expect(page).to have_content('Não foi possível criar a categoria.')
-    expect(page).to have_field('Name')
+    expect(page).to have_field('Nome')
     expect(page).to have_button('Criar Categoria')
     expect(Category.where(name: 'Produtos Eletrônicos').size).to eq(1)
   end
@@ -45,12 +45,12 @@ describe "Administrador acessa a página de criação de categorias" do
     login_as(admin)
     visit new_category_path
 
-    fill_in 'Name',	with: ''
+    fill_in 'Nome',	with: ''
 
     click_button 'Criar Categoria'
 
     expect(page).to have_content('Não foi possível criar a categoria.')
-    expect(page).to have_field('Name')
+    expect(page).to have_field('Nome')
     expect(page).to have_button('Criar Categoria')
     expect(Category.all.empty?).to be(true)
   end
