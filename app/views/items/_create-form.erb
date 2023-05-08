@@ -1,0 +1,37 @@
+<main>
+<div>
+  <%= form_with model: @item do |f| %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    <div>
+      <%= f.label :weight, 'Peso em gramas'%>
+      <%= f.number_field :weight %>
+    </div>
+    <div>
+      <%= f.label :width, 'Largura em centímetros'%>
+      <%= f.number_field :width %>
+    </div>
+    <div>
+      <%= f.label :height, 'Altura em centímetros'%>
+      <%= f.number_field :height %>
+    </div>
+    <div>
+      <%= f.label :length, 'Comprimento em centímetros'%>
+      <%= f.number_field :length %>
+    </div>
+    <div>
+      <%= f.label :category%>
+      <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+    </div>
+    <div>
+      <%= f.submit %>
+    </div>
+  <% end  %>
+</div>
+</main>
