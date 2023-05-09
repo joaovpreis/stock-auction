@@ -23,6 +23,7 @@ describe "Administrador acessa a página de criação de items" do
     expect(page).to have_field('Altura em centímetros')
     expect(page).to have_field('Comprimento em centímetros')
     # expect(page).to have_select('Categoria')
+    expect(page).to have_field('Foto do Item')
     expect(page).to have_button('Criar Item')
   end
 
@@ -39,6 +40,7 @@ describe "Administrador acessa a página de criação de items" do
     fill_in('Altura em centímetros', with:'5')
     fill_in('Comprimento em centímetros', with:'25')
     select category.name , from: 'item_category_id'
+    attach_file('Foto do Item', "app/assets/images/macbook.jpg")
     click_button 'Criar Item'
 
     expect(page).to have_current_path(item_path(Item.last.id))
@@ -50,6 +52,7 @@ describe "Administrador acessa a página de criação de items" do
     expect(page).to have_content('5 cm')
     expect(page).to have_content('25 cm')
     expect(Item.last.code.size).to eq(10)
+    # page.should have_css('img', text: "macbook.jpg")
 
   end
   

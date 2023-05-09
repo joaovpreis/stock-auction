@@ -30,6 +30,10 @@
       <%= f.collection_select(:category_id, Category.all, :id, :name) %>
     </div>
     <div>
+      <%= f.label :photo, 'Foto do Item' %>
+      <%= f.file_field :photo %>
+    </div>
+    <div>
       <%= f.submit %>
     </div>
   <% end  %>
