@@ -1,5 +1,17 @@
 require 'rails_helper'
 
+describe 'Usuário normal acessa a página de criação de categorias' do
+  it "e é redirecionado para a página principal" do
+    user = User.create!(name: 'Leonardo', cpf:'89698395008', email:'leonardo@gmail.com.br', password:'password')
+    login_as(user)
+    visit new_category_path
+
+    expect(page).to have_current_path(root_path)
+    expect(page).to have_content(I18n.translate('devise.autorization.not_authorized')) 
+  end
+  
+end
+
 describe "Administrador acessa a página de criação de categorias" do
   it 'e ve os campos corretamente' do
     admin = User.create!(name: 'João Guilherme', cpf:'89698395008', email:'joao@leilaodogalpao.com.br', password:'password')

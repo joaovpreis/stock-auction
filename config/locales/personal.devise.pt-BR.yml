@@ -1,0 +1,4 @@
+pt-BR:
+  devise:
+    autorization:
+      not_authorized: Você não tem autorização para acessar essa página.

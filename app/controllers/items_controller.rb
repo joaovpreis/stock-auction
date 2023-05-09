@@ -1,4 +1,5 @@
 class ItemsController  < ApplicationController
+  before_action :is_admin?, only: [:new, :create]
   def show 
     @item = Item.find params[:id]
   end

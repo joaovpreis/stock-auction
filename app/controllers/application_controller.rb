@@ -7,4 +7,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :cpf])
   end
 
+  private
+  def is_admin?
+    unless current_user.admin?
+      flash.alert = I18n.translate('devise.autorization.not_authorized')
+      redirect_to root_path
+    end
+  end
+
 end
